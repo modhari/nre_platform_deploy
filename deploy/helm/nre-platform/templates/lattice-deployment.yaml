@@ -17,6 +17,15 @@ spec:
         - name: lattice
           image: "{{ .Values.lattice.image.repository }}:{{ .Values.lattice.image.tag }}"
           imagePullPolicy: {{ .Values.lattice.image.pullPolicy }}
+          env:
+            - name: USE_MCP
+              value: "true"
+            - name: MCP_SERVER_URL
+              value: "http://mcp-server:8080"
+            - name: MCP_AUTH_TOKEN
+              value: "change_me"
+            - name: MCP_HMAC_SECRET
+              value: "change_me_too"
           ports:
             - containerPort: {{ .Values.lattice.service.port }}
           readinessProbe:
