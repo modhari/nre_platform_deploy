@@ -26,6 +26,8 @@ spec:
               value: "change_me"
             - name: MCP_HMAC_SECRET
               value: "change_me_too"
+            - name: NRE_SCENARIO
+              value: "{{ .Values.lattice.env.NRE_SCENARIO }}"
           ports:
             - containerPort: {{ .Values.lattice.service.port }}
           readinessProbe:
