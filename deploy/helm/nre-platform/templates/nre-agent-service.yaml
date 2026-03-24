@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: nre-agent
+  namespace: {{ .Values.global.namespace }}
+spec:
+  selector:
+    app: nre-agent
+  ports:
+    - name: http
+      protocol: TCP
+      port: {{ .Values.nreAgent.service.port }}
+      targetPort: {{ .Values.nreAgent.service.port }}
+  type: ClusterIP

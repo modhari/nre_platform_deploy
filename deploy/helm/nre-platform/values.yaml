@@ -84,9 +84,10 @@ nreAgent:
 
   image:
     repository: ghcr.io/modhari/nre_agent
-    tag: "0.1.7"
+    tag: "0.1.11"
     pullPolicy: IfNotPresent
-
+  service:
+    port: 8090
   env:
     # Controls which scenario agent selects
     # Change this to test different behaviors
@@ -94,6 +95,9 @@ nreAgent:
     NRE_AGENT_INTERVAL_SECONDS: "30"
     NRE_AGENT_APPROVAL_DIR: "/data/nre_agent_approvals"
     NRE_AGENT_APPROVAL_STATUS: ""
+    NRE_AGENT_APPROVAL_COOLDOWN_SECONDS: "300"
+    NRE_AGENT_API_HOST: "0.0.0.0"
+    NRE_AGENT_API_PORT: "8090"
   persistence:
     #Mount path where approval JSON records are stored
     mountPath: "/data/nre_agent_approvals"

@@ -26,6 +26,14 @@ spec:
               value: "{{ .Values.nreAgent.env.NRE_AGENT_APPROVAL_DIR }}"
             - name: NRE_AGENT_APPROVAL_STATUS
               value: "{{ .Values.nreAgent.env.NRE_AGENT_APPROVAL_STATUS }}"
+            - name: NRE_AGENT_APPROVAL_COOLDOWN_SECONDS
+              value: "{{ .Values.nreAgent.env.NRE_AGENT_APPROVAL_COOLDOWN_SECONDS }}"
+            - name: NRE_AGENT_API_HOST
+              value: "{{ .Values.nreAgent.env.NRE_AGENT_API_HOST }}"
+            - name: NRE_AGENT_API_PORT
+              value: "{{ .Values.nreAgent.env.NRE_AGENT_API_PORT }}"
+          ports:
+            - containerPort: {{ .Values.nreAgent.service.port }}
           volumeMounts:
             - name: nre-agent-approvals
               mountPath: {{ .Values.nreAgent.persistence.mountPath }}
