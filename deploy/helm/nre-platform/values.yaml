@@ -13,7 +13,7 @@ lattice:
 
   image:
     repository: ghcr.io/modhari/lattice
-    tag: "0.1.7"
+    tag: "0.1.8"
     pullPolicy: IfNotPresent
 
   service:
@@ -53,7 +53,7 @@ mcpServer:
 
   image:
     repository: ghcr.io/modhari/mcp_server
-    tag: "0.1.13"
+    tag: "0.1.17"
     pullPolicy: IfNotPresent
 
   service:
@@ -90,7 +90,7 @@ nreAgent:
   env:
     # Controls which scenario agent selects
     # Change this to test different behaviors
-    NRE_AGENT_SCENARIO: ""
+    NRE_AGENT_SCENARIO: "spine_bgp_disable"
     NRE_AGENT_INTERVAL_SECONDS: "30"
   resources:
     requests:
