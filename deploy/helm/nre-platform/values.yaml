@@ -84,14 +84,21 @@ nreAgent:
 
   image:
     repository: ghcr.io/modhari/nre_agent
-    tag: "0.1.5"
+    tag: "0.1.7"
     pullPolicy: IfNotPresent
 
   env:
     # Controls which scenario agent selects
     # Change this to test different behaviors
-    NRE_AGENT_SCENARIO: "spine_bgp_disable"
+    NRE_AGENT_SCENARIO: ""
     NRE_AGENT_INTERVAL_SECONDS: "30"
+    NRE_AGENT_APPROVAL_DIR: "/data/nre_agent_approvals"
+    NRE_AGENT_APPROVAL_STATUS: ""
+  persistence:
+    #Mount path where approval JSON records are stored
+    mountPath: "/data/nre_agent_approvals"
+    # Small persistent volume is enough for JSPN approvals records.
+    size: "1Gi"
   resources:
     requests:
       cpu: "100m"

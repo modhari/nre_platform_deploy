@@ -22,5 +22,16 @@ spec:
               value: "{{ .Values.nreAgent.env.NRE_AGENT_SCENARIO }}"
             - name: NRE_AGENT_INTERVAL_SECONDS
               value: "{{ .Values.nreAgent.env.NRE_AGENT_INTERVAL_SECONDS }}"
+            - name: NRE_AGENT_APPROVAL_DIR
+              value: "{{ .Values.nreAgent.env.NRE_AGENT_APPROVAL_DIR }}"
+            - name: NRE_AGENT_APPROVAL_STATUS
+              value: "{{ .Values.nreAgent.env.NRE_AGENT_APPROVAL_STATUS }}"
+          volumeMounts:
+            - name: nre-agent-approvals
+              mountPath: {{ .Values.nreAgent.persistence.mountPath }}
           resources:
             {{- toYaml .Values.nreAgent.resources | nindent 12 }}
+      volumes:
+        - name: nre-agent-approvals
+          persistentVolumeClaim:
+            claimName: nre-agent-approvals
