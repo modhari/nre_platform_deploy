@@ -13,7 +13,7 @@ lattice:
 
   image:
     repository: ghcr.io/modhari/lattice
-    tag: "0.1.8"
+    tag: "0.1.12"
     pullPolicy: IfNotPresent
 
   service:
@@ -53,7 +53,7 @@ mcpServer:
 
   image:
     repository: ghcr.io/modhari/mcp_server
-    tag: "0.1.17"
+    tag: "0.1.23"
     pullPolicy: IfNotPresent
 
   service:
@@ -110,3 +110,30 @@ nreAgent:
     limits:
       cpu: "300m"
       memory: "256Mi"
+
+# --------------------------------------------------------------------
+# ECMP TRACE
+# --------------------------------------------------------------------
+ecmpTrace:
+  replicaCount: 1
+  image:
+    repository: ghcr.io/modhari/ecmp_trace
+    tag: "0.1.0"
+    pullPolicy: IfNotPresent
+  service:
+    port: 8081
+  env:
+    TRACE_TIMEOUT_SECONDS: "5"
+    TRACE_MAX_FLOWS: "8"
+  resources:
+    requests:
+      cpu: "100m"
+      memory: "128Mi"
+    limits:
+      cpu: "300m"
+      memory: "256Mi"
+
+victoriaMetrics:
+  enabled: true
+  service:
+    port: 8428
